@@ -1,16 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Delete Post</legend>
-                <h2>Are you sure you want to delete {{ post.title }}?"</h2>
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
-                <a class="btn btn-outline-secondary" href="{% url 'profile' %}">Cancel</a>
+<style>
+        body {
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            background-color: #fdfdfd;
+        }
+        
+        .head_text {
+            color: white;
+        }
+        
+        .card {
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+</style>
+    
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 card mb-4  mt-3 left  top">
+        <div class="card-body">
+            <div class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Delete Post</legend>
+                        <p>Are you sure you want to delete {{ post.title }}?</p>
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                        <a class="btn btn-outline-secondary" href="{% url 'profile' %}">Cancel</a>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+      </div>
+      {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
+</div>
+
 {% endblock content %}

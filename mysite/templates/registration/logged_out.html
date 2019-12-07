@@ -1,9 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>You have been logged out</h2>
-    <div class="border-top pt-3">
-        <small class="text-muted">
+
+<style>
+        body {
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            background-color: #fdfdfd;
+        }
+        
+        .head_text {
+            color: white;
+        }
+        
+        .card {
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+</style>
+    
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <div class="content-section">
+            <legend class="border-bottom mb-4">You have been logged out</legend>
             <a href="{% url 'login' %}">Log In Again</a>
-        </small>
+        </div>
+      </div>
     </div>
+    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+  </div>
+</div>
+
 {% endblock content %}
