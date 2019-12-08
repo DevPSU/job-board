@@ -1,6 +1,8 @@
 from django.views import generic
-from django.shortcuts import render
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
 from .models import Post
 
 class PostList(generic.ListView):
@@ -44,3 +46,8 @@ class ProfileList(generic.ListView):
 
     # queryset = Post.objects.filter(status=1).order_by('-created_on')
     # template_name = 'profile.html'
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
