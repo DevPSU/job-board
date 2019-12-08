@@ -13,7 +13,7 @@ class PostDetail(generic.DetailView):
 
 class PostCreate(generic.CreateView):
     model = Post
-    fields = ['title', 'slug', 'content']
+    fields = ['title', 'job_type', 'contact', 'description', 'additional_information']
     success_url='/'
 
     def form_valid(self, form):
@@ -22,7 +22,7 @@ class PostCreate(generic.CreateView):
 
 class PostUpdate(generic.UpdateView):
     model = Post
-    fields = ['title', 'slug', 'content']
+    fields = ['title', 'job_type', 'contact', 'description', 'additional_information']
     success_url='/'
 
     def form_valid(self, form):

@@ -20,18 +20,30 @@
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8 mt-3 left">
+          {% if user.is_authenticated %}
             {% for post in post_list %}
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.Author }} | {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                    <p class="card-text"><b>{{ post.author }}</b> - {{ post.date}} </p>
+                    <p class="card-text"><b>{{post.job_type}}</b> - {{post.description|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">See More &rarr;</a>
                 </div>
             </div>
             {% endfor %}
+          {% else %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">Login or Register</h2>
+                    <p class="card-text">In order to access this website, you must be a PSU affiliate. Please login or register!</p>
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login &rarr;</a>
+                    <a href="{% url 'login' %}" class="btn btn-primary">Register &rarr;</a>
+                </div>
+            </div>
+          {% endif %}
         </div>
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
 </div>
+
 {%endblock%}

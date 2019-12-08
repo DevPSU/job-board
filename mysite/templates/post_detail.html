@@ -18,15 +18,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
-      <div class="card-body">
-        <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
-        <p class=" text-muted">{{ post.author }} {{ post.created_on }}</p>
-        <p class="card-text ">{{ object.content | safe }}</p>
+      <div class="col-md-8 mt-3 left">
+          <div class="card mb-4">
+              <div class="card-body">
+                  <h2 class="card-title">{{ post.title }}</h2>
+                  <p class="card-text"><b>{{ post.author }}</b> - {{ post.date}} </p>
+                  <p class="card-text"><b>{{post.job_type}}</b> - {{post.description| safe }}</p>
+                  <p class="card-text"><b>Contact Info:</b> {{ post.contact}} </p>
+                  <p class="card-text"><b>Additional Info:</b> {{ post.additional_information}}</p>
+              </div>
+          </div>
       </div>
-    </div>
-    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+      {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
   </div>
 </div>
-
 {% endblock content %}

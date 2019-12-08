@@ -24,9 +24,9 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.Author }} {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                    <p class="card-text"><b>{{ post.author }}</b> - {{ post.date}} </p>
+                    <p class="card-text"><b>{{post.job_type}}</b> - {{post.description|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">See More &rarr;</a>
                     <a href="{% url 'post_update' post.slug  %}" class="btn btn-primary">Edit &rarr;</a>
                     <a href="{% url 'post_delete' post.slug  %}" class="btn btn-primary">Delete &rarr;</a>
                 </div>
